@@ -1,15 +1,16 @@
 let cocktailName = ""
 document
   .getElementById("search-bar")
-  .addEventListener('keypress', (event) => {
-      if (event.key !="Enter") {
-        cocktailName = cocktailName + event.key
-      }else {
-        event.preventDefault()
-          searchByName(cocktailName)
-          cocktailName = ""
-          document.getElementById("search-bar").value = ''
-      }
+  .addEventListener('keypress', (event) => { 
+    if (event.key !="Enter") {
+        cocktailName = event.target.value
+        console.log(`name: ${cocktailName}`)
+    } else {
+      event.preventDefault()
+      searchByName(cocktailName)
+      cocktailName = ""
+      document.getElementById("search-bar").value = ''
+    }
      
   })
 function searchByName(cocktailName) {
