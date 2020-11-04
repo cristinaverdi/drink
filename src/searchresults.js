@@ -13,6 +13,15 @@ document
     }
      
   })
+
+  document
+  .getElementById("search-button")
+  .addEventListener('click', (event) => { 
+      event.preventDefault()
+      cocktailName = document.getElementById("search-bar").value
+      searchByName(cocktailName)
+    })
+
 function searchByName(cocktailName) {
     let url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + cocktailName
     console.log(url)
