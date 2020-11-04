@@ -1,17 +1,27 @@
 let cocktailName = ""
 document
   .getElementById("search-bar")
-  .addEventListener('keypress', (event) => {
-      if (event.key !="Enter") {
-        cocktailName = cocktailName + event.key
-      }else {
-        event.preventDefault()
-          searchByName(cocktailName)
-          cocktailName = ""
-          document.getElementById("search-bar").value = 'git '
-      }
+  .addEventListener('keypress', (event) => { 
+    if (event.key !="Enter") {
+        cocktailName = event.target.value
+        console.log(`name: ${cocktailName}`)
+    } else {
+      event.preventDefault()
+      searchByName(cocktailName)
+      cocktailName = ""
+      document.getElementById("search-bar").value = ''
+    }
      
   })
+
+  document
+  .getElementById("search-button")
+  .addEventListener('click', (event) => { 
+      event.preventDefault()
+      cocktailName = document.getElementById("search-bar").value
+      searchByName(cocktailName)
+    })
+
 function searchByName(cocktailName) {
     let url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + cocktailName
     console.log(url)
